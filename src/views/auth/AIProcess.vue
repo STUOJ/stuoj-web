@@ -1,29 +1,29 @@
 <template>
-  <div class="algorithm-form">
-    <div class="form-input">
-      <label for="title">标题:</label>
-      <el-input
-        id="title"
-        v-model="req.title"
-        placeholder="请输入标题..."
-      ></el-input>
-    </div>
-    <div class="form-input">
-      <label for="description">算法情景描述:</label>
-      <textarea
-        id="description"
-        v-model="req.description"
-        placeholder="请输入算法情景描述..."
-        rows="15"
-        cols="50"
-      ></textarea>
+    <div class="algorithm-form">
+      <div class="form-input">
+        <label for="description">算法情景描述:</label>
+        <textarea
+          id="description"
+          v-model="req.description"
+          placeholder="请输入算法情景描述..."
+          rows="15"
+          cols="50"
+        ></textarea>
+      </div>
       <div class="form-tags">
         <label>算法标签:</label>
         <el-form-item label-width="auto">
             <ProblemTagSelect v-model="req.tags" ref="problemTagSelectRef" />
         </el-form-item>
+        <!-- <el-checkbox-group v-model="req.tags">
+          <el-checkbox label="二分">二分</el-checkbox>
+          <el-checkbox label="贪心">贪心</el-checkbox>
+          <el-checkbox label="动态规划">动态规划</el-checkbox>
+          <el-checkbox label="深度优先搜索">深度优先搜索</el-checkbox>
+          <el-checkbox label="广度优先搜索">广度优先搜索</el-checkbox> -->
+          <!-- 根据需要添加更多的算法标签 -->
+        <!-- </el-checkbox-group> -->
       </div>
-    </div>
       <el-button type="primary" @click="submitForm">确定</el-button>
     </div>
   </template>
@@ -33,57 +33,16 @@
   import { ElCheckbox, ElCheckboxGroup, ElButton } from 'element-plus';
   import router from '@/router';
   import type { ProblemSubmit } from '@/types/AiProcess';
-  import axios from 'axios';
-  import{aiProcessApi} from'@/apis/aiProcessApis';
-  import { uploadProblemApi } from '@/apis/problem';
-  import type { ProblemInfo } from '@/types/Problem';
-  import { userStore } from '@/stores/user';
   import ProblemTagSelect from '@/components/problem/ProblemTagSelect.vue';
   // 响应式数据
-  const req = ref<ProblemSubmit>({title:'',description:'',tags:[]});
-  const aiProblemInfo = ref<ProblemInfo | null>(null);;
-  const {execute:submitInfo, state:getProblemInfo} = aiProcessApi();
-  const {execute:submitProblem, state:getProblemid} = uploadProblemApi();
-  const { token } = userStore();
+  const req = ref<ProblemSubmit>({description:'',tags:[]});
   // 提交表单的方法
   const submitForm = async () => {
       // 控制台输出用户填写的文本区域和选择的算法标签
-  console.log('标题:', req.value.title);
   console.log('算法情景描述:', req.value.description);
   console.log('选择的算法标签:', req.value.tags);
-  await submitInfo({
-    headers: {
-            Authorization: `Bearer ${token.value}`
-        },
-    data:{
-      title:req.value.title,
-      description:req.value.description,
-      tags:req.value.tags
-  }
-  });
-  console.log('返回题目信息',getProblemInfo);
-  aiProblemInfo.value = getProblemInfo.value?.data as ProblemInfo;
- console.log('题目信息和des',aiProblemInfo.value.title,aiProblemInfo.value?.description);
 
-  router.push({path:'/problemdisplay'});
-  // if(getProblemInfo.value?.code === 1){
-  //  const res = getProblemInfo.value?.data as ProblemInfo; 
-  //  await submitProblem({
-  //   headers: {
-  //           Authorization: `Bearer ${token.value}`
-  //       },
-  //   data : res.value
-  //  });
-  //  console.log('返回题目id',getProblemid);
-  //  if(getProblemid.value?.code===1)
-  //  {
-  //   const problemId = getProblemid.value.data;
-  //   console.log('题目id',problemId);
-  //   //router.push({path:'/web/problem/:problemId'});
-  //  }
-  // }
-
-    
+    router.push({path:'/problemDisplay'});
   };
   </script>
   
