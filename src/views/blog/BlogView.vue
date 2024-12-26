@@ -27,6 +27,9 @@ onMounted(async () => {
 const commentForm = ref({
   content: ""
 });
+
+const onSubmit = () => {
+}
 </script>
 
 <template>

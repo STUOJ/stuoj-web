@@ -7,7 +7,7 @@
         <ElForm ref="formRef" :model="info" label-width="80px">
             <ElFormItem label="头像">
                 <ElAvatar :src="info.avatar" :size="50" @click="selectFile" />
-                <AvatarCropper ref="avatarCropper" @crop-finish="onCropFinish" />
+                <!-- <AvatarCropper ref="avatarCropper" @crop-finish="onCropFinish" /> -->
             </ElFormItem>
             <ElFormItem label="用户名">{{ info.username }}</ElFormItem>
             <ElFormItem label="邮箱">{{ info.email }}</ElFormItem>
@@ -33,13 +33,13 @@ import { Edit } from '@element-plus/icons-vue';
 import { userStore } from '@/stores/user';
 import { GetUserInfo } from '@/apis/user';
 import { UploadAvatar } from '@/apis/user';
-import { type BaseUserInfo } from '@/types/User';
+import { type UserInfo } from '@/types/User';
 import AvatarCropper from './AvatarCropper.vue';
 
 const { token } = userStore();
 const { execute } = GetUserInfo();
 const { execute: uploadAvatarExecute } = UploadAvatar();
-const info = ref<BaseUserInfo>({
+const info = ref<UserInfo>({
     id: 0,
     username: '',
     email: '',
@@ -68,14 +68,14 @@ const showDialog = async () => {
 const avatarCropper = ref(null);
 
 const selectFile = async () => {
-    const file = await window.Selection.openFile();
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            avatarCropper.value.openCropper(e.target?.result as string);
-        };
-        reader.readAsDataURL(file);
-    }
+    // const file = await window.Selection.openFile();
+    // if (file) {
+    //     const reader = new FileReader();
+    //     reader.onload = (e) => {
+    //         avatarCropper.value.openCropper(e.target?.result as string);
+    //     };
+    //     reader.readAsDataURL(file);
+    // }
 };
 
 const onCropFinish = (base64: string) => {
@@ -83,10 +83,10 @@ const onCropFinish = (base64: string) => {
 };
 
 const updateInfo = async () => {
-    const avatarBase64 = avatarCropper.value.getCroppedImage();
-    if (avatarBase64) {
-        await uploadAvatarExecute({ avatar: avatarBase64 });
-    }
+    // const avatarBase64 = avatarCropper.value.getCroppedImage();
+    // if (avatarBase64) {
+    //     await uploadAvatarExecute({ avatar: avatarBase64 });
+    // }
     // ...existing code...
 };
 

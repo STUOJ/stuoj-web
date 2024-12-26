@@ -5,12 +5,12 @@
         <el-col :span="12">
           <el-card>
             <h1>用户注册</h1>
-            <br/>
+            <br />
             <el-form :model="req" label-width="80px">
               <el-form-item label="用户名">
                 <el-input v-model="req.username" />
               </el-form-item>
-<!--
+              <!--
               <el-form-item label="手机">
                 <el-input type="tel" v-model="req.phone" disabled />
               </el-form-item>
@@ -43,25 +43,25 @@ import type { RegisterReq } from '@/types/User';
 import { ElNotification, type FormItemProps } from 'element-plus';
 import router from '@/router';
 
-const req = ref<RegisterReq>({ username: '', email: '', password: '' });
+const req = ref<RegisterReq>({ username: '', email: '', password: '', phone: '' });
 const itemLabelPosition = ref<FormItemProps['labelPosition']>('right')
 
 const handleRegister = async () => {
-    const { execute } = RegisterApi();
-    const state = await execute({
-        data: {
-            username: req.value.username,
-            email: req.value.email,
-            password: req.value.password
-        }
-    }).then(() => {
-        ElNotification({
-            title: '成功',
-            message: '注册成功',
-            type: 'success',
-        });
-        router.push('/user/login')
+  const { execute } = RegisterApi();
+  const state = await execute({
+    data: {
+      username: req.value.username,
+      email: req.value.email,
+      password: req.value.password
+    }
+  }).then(() => {
+    ElNotification({
+      title: '成功',
+      message: '注册成功',
+      type: 'success',
     });
+    router.push('/user/login')
+  });
 };
 
 onMounted(() => {

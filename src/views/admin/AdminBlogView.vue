@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { getBlogListApi } from '@/apis/blog';
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import { BlogStatusMap, BlogStatusColor } from '@/types/Blog';
 import { formatDateStr } from "@/utils/date";
 import type { BlogInfo } from '@/types/Blog';
 import type { Page } from '@/types/misc';
-import {userStore} from "@/stores/user";
+import { userStore } from "@/stores/user";
+
+const search = ref("");
 
 interface Scope {
   row: {
@@ -42,10 +44,28 @@ const getList = async () => {
   }
 }
 
-onMounted (() => {
+onMounted(() => {
   getList();
 })
 
+const handleCreate = () => {
+}
+
+const selectable = () => {
+  return true;
+}
+
+const handleEdit = (index: number, row: BlogInfo) => {
+}
+
+const handleReview = (index: number, row: BlogInfo) => {
+}
+
+const handleBan = (index: number, row: BlogInfo) => {
+}
+
+const handleDelete = (index: number, row: BlogInfo) => {
+}
 
 </script>
 
@@ -67,7 +87,7 @@ onMounted (() => {
       <el-card>
         <el-table :data="blogs" style="width: 100%" stripe>
           <el-table-column type="selection" :selectable="selectable" width="55" />
-          <el-table-column label="ID" prop="id" width="80px" sortable/>
+          <el-table-column label="ID" prop="id" width="80px" sortable />
           <el-table-column label="标题" show-overflow-tooltip>
             <template #default="scope">
               <router-link :to="'/blog/' + scope.row.blog_id">
@@ -127,18 +147,11 @@ onMounted (() => {
             </template>
           </el-table-column>
         </el-table>
-        <br/>
-        <el-pagination
-            v-model:current-page="params.page"
-            v-model:page-size="params.size"
-            :page-sizes="[10, 20, 50, 100]"
-            :size="'small'"
-            :background="true"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="blogPage?.total"
-            @size-change="getList"
-            @current-change="getList"
-        />
+        <br />
+        <el-pagination v-model:current-page="params.page" v-model:page-size="params.size"
+          :page-sizes="[10, 20, 50, 100]" :size="'small'" :background="true"
+          layout="total, sizes, prev, pager, next, jumper" :total="blogPage?.total" @size-change="getList"
+          @current-change="getList" />
       </el-card>
     </el-main>
   </el-container>
@@ -160,5 +173,4 @@ a:hover {
 a:active {
   text-decoration: none;
 }
-
 </style>

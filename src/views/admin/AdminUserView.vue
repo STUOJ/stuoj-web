@@ -9,6 +9,9 @@ import {userStore} from "@/stores/user";
 import {BlogStatusColor, BlogStatusMap} from "@/types/Blog";
 import UserRoleTag from '../user/UserRoleTag.vue';
 
+
+const search = ref("");
+
 interface Scope {
   row: {
     role: keyof typeof UserRoleMap;
@@ -47,6 +50,24 @@ const getList = async () => {
 onMounted (() => {
   getList();
 })
+
+const handleCreate = () => {
+}
+
+const handleEdit = (index: number, row: UserInfo) => {
+}
+
+const handleSetRole = (index: number, row: UserInfo) => {
+}
+
+const handleBan = (index: number, row: UserInfo) => {
+}
+
+const handleDelete = (index: number, row: UserInfo) => {
+}
+const selectable = () => {
+  return true;
+}
 
 
 </script>

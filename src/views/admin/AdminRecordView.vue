@@ -7,6 +7,8 @@ import {userStore} from "@/stores/user";
 import type { Submission } from '@/types/Record';
 import type { Page } from '@/types/misc';
 
+const search = ref("");
+
 interface Scope {
   row: {
     status: keyof typeof JudgeStatusAbbr | keyof typeof JudgeStatusColor;
@@ -45,6 +47,13 @@ const getList = async () => {
 onMounted (() => {
   getList();
 })
+
+const selectable = (row: Submission) => {
+  return true;
+}
+
+const handleDelete = (index: number, row: Submission) => {
+}
 
 
 </script>

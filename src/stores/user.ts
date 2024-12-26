@@ -26,6 +26,7 @@ export const userStore = createGlobalState(() => {
     role: ROLE.Visitor,
     update_time: "",
     username: "未登录",
+    signature: "",
   });
 
   const getId = async () => {

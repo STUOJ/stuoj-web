@@ -35,8 +35,8 @@
 <script setup lang="ts">
 import { ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { ElMessage } from 'element-plus'
-import { VueCropper } from 'vue-cropper'
-import 'vue3-cropper/dist/style.css'
+// import VueCropper from 'vue-cropper'
+// import 'vue3-cropper/dist/style.css'
 
 const props = defineProps<{
     img: string;
@@ -105,7 +105,7 @@ const previewStyle = computed(() => ({
     overflow: 'hidden',
 }));
 
-const { getCropData } = VueCropper();
+// const { getCropData } = VueCropper();
 
 const uploadImg = (event: Event) => {
     const file = (event.target as HTMLInputElement).files?.[0];
@@ -138,11 +138,11 @@ const close = () => {
 const finish = async () => {
     loading.value = true;
     try {
-        const cropData = await getCropData();
+        // const cropData = await getCropData();
         // 处理裁剪后的图片数据
         ElMessage.success('图片裁剪成功');
         close();
-        emit('crop-finish', cropData);
+        // emit('crop-finish', cropData);
     } catch (error) {
         ElMessage.error('图片裁剪失败');
     } finally {
@@ -157,8 +157,8 @@ const openCropper = (img: string) => {
 
 const getCroppedImage = async () => {
     try {
-        const cropData = await getCropData();
-        return cropData;
+        // const cropData = await getCropData();
+        // return cropData;
     } catch (error) {
         ElMessage.error('获取裁剪图片失败');
         return null;

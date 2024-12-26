@@ -97,6 +97,8 @@ const problem = ref<ProblemInfo>({
   description: '',
   input: '',
   output: '',
+  difficulty: 0,
+  memory_limit:0,
   sample_input: '',
   sample_output: '',
   hint: '',

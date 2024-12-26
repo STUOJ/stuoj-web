@@ -41,6 +41,9 @@ const blogForm = ref({
   content: "",
 })
 
+const onSubmit = () => {
+}
+
 </script>
 
 <template>

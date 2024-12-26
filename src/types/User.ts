@@ -29,12 +29,13 @@ export const UserRoleMap = {
     [ROLE.Root]: "超管"
 };
 
-export interface LoginReq{
+export interface LoginReq {
     email: string;
     password: string;
 }
 
-export interface RegisterReq{
+export interface RegisterReq {
+    phone: string;
     username: string;
     email: string;
     password: string;
