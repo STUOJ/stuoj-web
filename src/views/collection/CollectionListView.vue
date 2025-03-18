@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { Operation } from '@element-plus/icons-vue';
+import { CollectionStatus, CollectionStatusMap } from '@/types/Collection';
+import TagSelect from '@/components/TagSelect.vue';
+import TimeSelect from '@/components/form/TimeSelect.vue';
+import OrderSelect from '@/components/OrderSelect.vue';
 import { formatDate } from '@/utils/date';
 import AvatarInfo from '@/components/user/AvatarInfo.vue';
 import type { CollectionInfo, CollectionParams } from '@/types/Collection';
-import { CollectionStatus } from '@/types/Collection';
 import { getCollectionListApi } from '@/apis/collection';
-import { ElButton, ElCard, ElDatePicker, ElForm, ElFormItem, ElInput, ElOption, ElPagination, ElSelect } from 'element-plus';
+import { ElButton, ElCard, ElForm, ElFormItem, ElInput, ElPagination } from 'element-plus';
+import { OrderBy } from '@/types/misc';
 
 const { execute } = getCollectionListApi();
 
@@ -14,7 +19,7 @@ const paramsSelect = ref<CollectionParams>({
   page: 1,
   size: 20,
   title: '',
-  status: [],
+  status: '',
   "start-time": '',
   "end-time": ''
 });
@@ -38,6 +43,27 @@ onMounted(() => {
   handleQuery();
 });
 
+const showCard = ref(true);
+const startTimeRef = ref<InstanceType<typeof TimeSelect>>();
+const endTimeRef = ref<InstanceType<typeof TimeSelect>>();
+const orderRef = ref<InstanceType<typeof OrderSelect>>();
+const statusTagSelectRef = ref<InstanceType<typeof TagSelect>>();
+
+const handleReset = () => {
+  paramsSelect.value = {
+    page: 1,
+    size: 20,
+    title: '',
+    status: '',
+    "start-time": '',
+    "end-time": ''
+  };
+  startTimeRef.value?.reset();
+  endTimeRef.value?.reset();
+  orderRef.value?.reset();
+  statusTagSelectRef.value?.reset();
+};
+
 const handleQuery = async () => {
   params.value = {
     ...paramsSelect.value,
@@ -54,30 +80,36 @@ const handleQuery = async () => {
 
 <template>
   <ElCard>
-    <ElForm :inline="true" @submit.prevent="handleQuery">
-      <ElFormItem label="标题">
-        <ElInput v-model="paramsSelect.title" placeholder="输入题单标题" clearable />
-      </ElFormItem>
+    <div class="blog-select-button" style="margin-bottom: 5px; text-align: right;">
+      <ElButton style="width: 30px;" plain :icon="Operation" @click="showCard = !showCard"></ElButton>
+    </div>
+    <ElCard v-show="showCard" style="margin-bottom: 5px;">
+      <ElForm :model="paramsSelect">
+        <ElFormItem :inline="true">
+          <ElInput class="form-item-input" v-model="paramsSelect.title" placeholder="题单标题" clearable />
+        </ElFormItem>
 
-      <ElFormItem label="状态">
-        <ElSelect v-model="paramsSelect.status" multiple placeholder="选择状态" style="width: 200px">
-          <ElOption :label="'公开'" :value="CollectionStatus.Public" />
-          <ElOption :label="'私有'" :value="CollectionStatus.Private" />
-        </ElSelect>
-      </ElFormItem>
+        <ElFormItem label-position="left" label="创建时间">
+          <TimeSelect v-model:time="paramsSelect['start-time']" placeholder="开始时间" margin="1px" />
+          <span style="margin: 0 10px;">-</span>
+          <TimeSelect v-model:time="paramsSelect['end-time']" placeholder="结束时间" margin="1px" />
+        </ElFormItem>
 
-      <ElFormItem label="时间范围">
-        <ElDatePicker v-model="paramsSelect['start-time']" type="datetime" placeholder="开始时间"
-          value-format="YYYY-MM-DD HH:mm:ss" />
-        -
-        <ElDatePicker v-model="paramsSelect['end-time']" type="datetime" placeholder="结束时间"
-          value-format="YYYY-MM-DD HH:mm:ss" />
-      </ElFormItem>
+        <ElFormItem label-position="left" label="状态">
+          <TagSelect v-model:arr-str="paramsSelect.status" :str-map="CollectionStatusMap" />
+        </ElFormItem>
 
-      <ElFormItem>
-        <ElButton type="primary" @click="handleQuery">查询</ElButton>
-      </ElFormItem>
-    </ElForm>
+        <ElFormItem>
+          <OrderSelect v-model:order-by="paramsSelect.order_by" v-model:order="paramsSelect.order"
+            :exclude="[OrderBy.blog, OrderBy.user, OrderBy.status, OrderBy.problem]" />
+        </ElFormItem>
+
+        <el-form-item>
+          <el-button @click="handleReset">重置</el-button>
+          <el-button type="primary" @click="handleQuery">查询</el-button>
+        </el-form-item>
+      </ElForm>
+    </ElCard>
   </ElCard>
 
   <br />

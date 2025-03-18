@@ -1,3 +1,4 @@
+import type { OrderBy } from "./misc";
 import type { ProblemInfo } from "./Problem";
 import type { UserInfo } from "./User";
 
@@ -20,6 +21,11 @@ export enum CollectionStatus {
     Private = 1,
 }
 
+export const CollectionStatusMap = {
+    [CollectionStatus.Public]: "公开",
+    [CollectionStatus.Private]: "私有",
+}
+
 export interface CollectionProblem {
     problem_id: number;
     collection_id: number;
@@ -39,9 +45,9 @@ export interface CollectionParams {
     title?: string,
     user?: number,
     problem?: number[],
-    status?: CollectionStatus[],
+    status?: string,
     order?: string,
-    order_by?: string,
+    order_by?: OrderBy,
     "start-time"?: string,
     "end-time"?: string
 }
