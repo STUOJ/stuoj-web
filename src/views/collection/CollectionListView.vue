@@ -90,9 +90,9 @@ const handleQuery = async () => {
         </ElFormItem>
 
         <ElFormItem label-position="left" label="创建时间">
-          <TimeSelect v-model:time="paramsSelect['start-time']" placeholder="开始时间" margin="1px" />
+          <TimeSelect ref="startTimeRef" v-model:time="paramsSelect['start-time']" placeholder="开始时间" margin="1px" />
           <span style="margin: 0 10px;">-</span>
-          <TimeSelect v-model:time="paramsSelect['end-time']" placeholder="结束时间" margin="1px" />
+          <TimeSelect ref="endTimeRef" v-model:time="paramsSelect['end-time']" placeholder="结束时间" margin="1px" />
         </ElFormItem>
 
         <ElFormItem label-position="left" label="状态">
