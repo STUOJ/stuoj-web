@@ -6,21 +6,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/collection',
-      name: 'collection',
-      component: () => import('../views/collection/CollectionListView.vue'),
+      path: '/',
+      name: 'home',
+      component: () => import('../views/HomeView.vue'),
       meta: {
         permission: Role.Visitor,
-        title: '题单 - STUOJ',
-      },
-    },
-    {
-      path: '/collection/:id',
-      name: 'collection-detail',
-      component: () => import('../views/collection/CollectionView.vue'),
-      meta: {
-        permission: Role.Visitor,
-        title: '题单详情 - STUOJ',
+        title: 'STUOJ - 汕头大学疾风算法协会 Online Judge',
       },
     },
     {
