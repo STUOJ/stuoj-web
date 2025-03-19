@@ -79,10 +79,8 @@ const handleQuery = async () => {
 </script>
 
 <template>
-  <ElCard>
-    <div class="blog-select-button" style="margin-bottom: 5px; text-align: right;">
-      <ElButton style="width: 30px;" plain :icon="Operation" @click="showCard = !showCard"></ElButton>
-    </div>
+  <div class="container-main">
+
     <ElCard v-show="showCard" style="margin-bottom: 5px;">
       <ElForm :model="paramsSelect">
         <ElFormItem :inline="true">
@@ -110,39 +108,41 @@ const handleQuery = async () => {
         </el-form-item>
       </ElForm>
     </ElCard>
-  </ElCard>
 
-  <br />
+    <br />
 
-  <ElCard>
-    <div v-if="collections.length === 0" class="empty-tip">暂无题单数据</div>
+    <ElCard>
+      <div v-if="collections.length === 0" class="empty-tip">暂无题单数据</div>
 
-    <div v-else class="collection-list">
-      <div v-for="collection in collections" :key="collection.id" class="collection-item">
-        <div class="header">
-          <div class="left-section">
-            <el-tag :type="collection.status === CollectionStatus.Public ? 'success' : 'info'" size="small">
-              {{ collection.status === CollectionStatus.Public ? '公开' : '私有' }}
-            </el-tag>
-            <h3 class="title">{{ collection.title }}</h3>
-            <div class="meta-info">
-              <span class="time">创建：{{ formatDate(new Date(collection.create_time)) }}</span>
-              <span class="time">修改：{{ formatDate(new Date(collection.update_time)) }}</span>
-              <span class="count">{{ collection.problem_ids?.length || 0 }}题</span>
+      <div v-else class="collection-list">
+        <div v-for="collection in collections" :key="collection.id" class="collection-item">
+          <router-link :to="'/collection/' + collection.id">
+            <div class="header">
+              <div class="left-section">
+                <el-tag :type="collection.status === CollectionStatus.Public ? 'success' : 'info'" size="small">
+                  {{ collection.status === CollectionStatus.Public ? '公开' : '私有' }}
+                </el-tag>
+                <h3 class="title">{{ collection.title }}</h3>
+                <div class="meta-info">
+                  <span class="time">创建：{{ formatDate(new Date(collection.create_time)) }}</span>
+                  <span class="time">修改：{{ formatDate(new Date(collection.update_time)) }}</span>
+                  <span class="count">{{ collection.problem_ids?.length || 0 }}题</span>
+                </div>
+                <p class="description">{{ collection.description || '暂无描述' }}</p>
+              </div>
+              <div class="right-section">
+                <AvatarInfo :user="collection.user" name :size="40" vertical />
+              </div>
             </div>
-            <p class="description">{{ collection.description || '暂无描述' }}</p>
-          </div>
-          <div class="right-section">
-            <AvatarInfo :user="collection.user" name :size="40" vertical />
-          </div>
+          </router-link>
         </div>
       </div>
-    </div>
 
-    <ElPagination class="pagination" v-model:current-page="paramsPage.page" v-model:page-size="paramsPage.size"
-      :page-sizes="[10, 20, 50, 100]" :background="true" layout="total, sizes, prev, pager, next, jumper"
-      :total="collectionPage?.total" @size-change="handleQuery" @current-change="handleQuery" />
-  </ElCard>
+      <ElPagination class="pagination" v-model:current-page="paramsPage.page" v-model:page-size="paramsPage.size"
+        :page-sizes="[10, 20, 50, 100]" :background="true" layout="total, sizes, prev, pager, next, jumper"
+        :total="collectionPage?.total" @size-change="handleQuery" @current-change="handleQuery" />
+    </ElCard>
+  </div>
 </template>
 
 <style scoped>
