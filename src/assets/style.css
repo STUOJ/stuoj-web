@@ -108,10 +108,18 @@ a:active {
   flex-direction: row; /* 明确设置行内排列 */
 }
 
+.flex-between {
+  justify-content: space-between;
+}
+
 .padding-container {
   padding: 8px;
 }
 
 .text-red {
   color: red;
+}
+
+.text-blue {
+  color: blue;
 }
