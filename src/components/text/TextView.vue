@@ -32,7 +32,7 @@ watch(() => props.content, async (newContent) => {
             return hljs.highlightBlock(block as HTMLElement);
         });
     });
-});
+}, { immediate: true });
 </script>
 
 <!-- 去除scoped，否则markdown样式无法生效 -->
