@@ -6,12 +6,21 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      path: '/collection',
+      name: 'collection',
+      component: () => import('../views/collection/CollectionListView.vue'),
       meta: {
         permission: Role.Visitor,
-        title: 'STUOJ - 汕头大学疾风算法协会 Online Judge',
+        title: '题单 - STUOJ',
+      },
+    },
+    {
+      path: '/collection/:id',
+      name: 'collection-detail',
+      component: () => import('../views/collection/CollectionView.vue'),
+      meta: {
+        permission: Role.Visitor,
+        title: '题单详情 - STUOJ',
       },
     },
     {
@@ -88,11 +97,20 @@ const router = createRouter({
     },
     {
       path: '/collection',
-      name: 'collection',
+      name: 'collection-list',
       component: () => import('../views/collection/CollectionListView.vue'),
       meta: {
         permission: Role.Visitor,
         title: '题单 - STUOJ',
+      },
+    },
+    {
+      path: '/collection/:id',
+      name: 'collection-detail',
+      component: () => import('../views/collection/CollectionView.vue'),
+      meta: {
+        permission: Role.Visitor,
+        title: '题单详情 - STUOJ',
       },
     },
     {
@@ -132,10 +150,10 @@ const router = createRouter({
       }
     },
     {
-      path:'/blog/edit',
-      name:'blog-edit',
+      path: '/blog/edit',
+      name: 'blog-edit',
       component: () => import('../views/blog/BlogEditView.vue'),
-      meta:{
+      meta: {
         permission: Role.User,
         title: '编辑博客 - STUOJ',
       },
@@ -264,7 +282,7 @@ router.beforeEach(async (to: any, from: any, next) => {
     next("/403");
   } else {
     if (to.meta.title) {
-        document.title = to.meta.title;
+      document.title = to.meta.title;
     }
     next();
   }
