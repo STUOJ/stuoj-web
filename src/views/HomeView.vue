@@ -8,7 +8,6 @@
             {{ year }} / {{ month }}
           </span><br/>
           <span style="font-size: 72px">{{ day }}</span><br/>
-          <el-button type="success" disabled>签到题</el-button>
         </el-card>
         <el-card style="margin-bottom: 20px">
           <template #header>
@@ -22,25 +21,8 @@
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="gotoProblem">传送</el-button>
-              <el-button @click="gotoRandomProblem" disabled>随机传送</el-button>
             </el-form-item>
           </el-form>
-        </el-card>
-        <el-card style="margin-bottom: 20px">
-          <template #header>
-            <div class="card-header">
-              <strong>精选题单</strong>
-            </div>
-          </template>
-          <EmptyPage></EmptyPage>
-        </el-card>
-        <el-card style="margin-bottom: 20px">
-          <template #header>
-            <div class="card-header">
-              <strong>近期比赛</strong>
-            </div>
-          </template>
-          <EmptyPage></EmptyPage>
         </el-card>
       </el-col>
       <el-col :span="18">

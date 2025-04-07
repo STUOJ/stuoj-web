@@ -6,7 +6,7 @@
           <img src="@/assets/images/logo/icon.png" alt="Logo" />
         </a>
         <div class="logo-text">
-          <span style="font-weight: bolder">JFOJ</span>
+          <span style="font-weight: bolder">疾风OJ</span>
           <span style="font-size: 12px;">jf.stuoj.com</span>
         </div>
       </div>
@@ -67,8 +67,6 @@ const menuLinks = computed(() => {
     { index: '/', icon: HomeFilled, text: '首页', role: Role.Visitor },
     { index: '/problem', icon: FolderOpened, text: '题库', role: Role.Visitor },
     { index: '/record', icon: List, text: '记录', role: Role.Visitor },
-    { index: '/collection', icon: Collection, text: '题单', role: Role.Visitor },
-    { index: '/contest', icon: Flag, text: '比赛', role: Role.Visitor },
     { index: '/blog', icon: Notebook, text: '博客', role: Role.Visitor },
     { index: '/admin', icon: Setting, text: '管理', role: Role.Editor },
   ];

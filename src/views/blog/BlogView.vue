@@ -89,10 +89,6 @@ const handleConfirmDelete = async () => {
         </div>
       </div>
       <div>
-        <el-icon><View /></el-icon>&nbsp;?
-        <el-divider direction="vertical"></el-divider>
-        <el-icon><Comment /></el-icon>&nbsp;?
-        <el-divider direction="vertical"></el-divider>
         <el-icon><DocumentAdd /></el-icon>
         &nbsp;{{ formatDateTimeStr(blog?.create_time ?? "") }}
         <el-divider direction="vertical"></el-divider>
@@ -116,12 +112,6 @@ const handleConfirmDelete = async () => {
           </router-link>
         </span>
         <span v-else>未关联题目</span>
-        <el-divider direction="vertical"></el-divider>
-        <el-icon><PriceTag /></el-icon>&nbsp;
-        <el-tag>tag</el-tag>&nbsp;
-        <el-tag>tag</el-tag>&nbsp;
-        <el-tag>tag</el-tag>&nbsp;
-        <el-tag>tag</el-tag>&nbsp;
       </div>
     </el-card>
     <br />

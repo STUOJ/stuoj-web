@@ -29,13 +29,8 @@ const menuLinks = computed(() => {
     { index: '/admin/tag', icon: PriceTag, text: '标签管理', role: Role.Editor },
     { index: '/admin/language', icon: Postcard, text: '语言管理', role: Role.Editor },
     { index: '/admin/record', icon: List, text: '记录管理', role: Role.Admin },
-    { index: '/admin/collection', icon: Collection, text: '题单管理', role: Role.Admin },
-    { index: '/admin/contest', icon: Flag, text: '比赛管理', role: Role.Admin },
     { index: '/admin/blog', icon: Notebook, text: '博客管理', role: Role.Admin },
     { index: '/admin/comment', icon: Comment, text: '评论管理', role: Role.Admin },
-    { index: '/admin/report', icon: WarnTriangleFilled, text: '处理举报', role: Role.Admin },
-    { index: '/admin/statistics', icon: Histogram, text: '统计数据', role: Role.Admin },
-    { index: '/admin/system', icon: Tools, text: '系统设置', role: Role.Root },
   ];
   return basicLinks.filter(link => info.value?.role >= link.role);
 })

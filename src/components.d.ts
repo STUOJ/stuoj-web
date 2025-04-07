@@ -83,6 +83,7 @@ declare module 'vue' {
     JudgeStatusSelect: typeof import('./components/record/JudgeStatusSelect.vue')['default']
     LangSelect: typeof import('./components/form/LangSelect.vue')['default']
     LanguageSelect: typeof import('./components/judge/LanguageSelect.vue')['default']
+    LanguageShow: typeof import('./components/judge/LanguageShow.vue')['default']
     LogoutButton: typeof import('./components/user/LogoutButton.vue')['default']
     NoticeList: typeof import('./components/blog/NoticeList.vue')['default']
     OrderSelect: typeof import('./components/OrderSelect.vue')['default']

@@ -83,24 +83,11 @@ onMounted(() => {
         </div>
         <br />
         <div>
-          <el-icon>
-            <View />
-          </el-icon>&nbsp;?
-          <el-divider direction="vertical"></el-divider>
-          <el-icon>
-            <Comment />
-          </el-icon>&nbsp;?
-          <el-divider direction="vertical"></el-divider>
           <el-icon><DocumentAdd /></el-icon>
           &nbsp;{{ formatDateTimeStr(blog.create_time) }}
           <el-divider direction="vertical"></el-divider>
           <el-icon><Edit /></el-icon>
           &nbsp;{{ formatDateTimeStr(blog.update_time) }}
-          <el-divider direction="vertical"></el-divider>
-          <el-tag>tag</el-tag>&nbsp;
-          <el-tag>tag</el-tag>&nbsp;
-          <el-tag>tag</el-tag>&nbsp;
-          <el-tag>tag</el-tag>&nbsp;
         </div>
         <el-divider></el-divider>
         <span>{{ blog.content }}</span>

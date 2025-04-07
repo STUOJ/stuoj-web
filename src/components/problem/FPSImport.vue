@@ -74,7 +74,7 @@ import { ref } from 'vue';
 import { ElNotification } from 'element-plus';
 import { parseFpsXml } from '@/utils/parseFps';
 import type { ProblemInfo, Solution, Testcase } from "@/types/Problem";
-import LanguageShow from '@/LanguageShow.vue';
+import LanguageShow from '@/components/judge/LanguageShow.vue';
 
 const props = defineProps<{
     problem?: ProblemInfo;

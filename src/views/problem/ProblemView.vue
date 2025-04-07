@@ -15,30 +15,6 @@
             <h1>[P{{ problemInfo.id }}] {{ problemInfo.title }}</h1>
             <div>
               <el-icon>
-                <View />
-              </el-icon>&nbsp;?
-              <el-divider direction="vertical"></el-divider>
-              <el-icon>
-                <StarFilled />
-              </el-icon>&nbsp;?
-              <el-divider direction="vertical"></el-divider>
-              <el-icon>
-                <Notebook />
-              </el-icon>&nbsp;?
-              <el-divider direction="vertical"></el-divider>
-              <el-icon>
-                <List />
-              </el-icon>&nbsp;?
-              <el-divider direction="vertical"></el-divider>
-              <el-icon>
-                <Checked />
-              </el-icon>&nbsp;?
-              <el-divider direction="vertical"></el-divider>
-              <el-icon>
-                <Failed />
-              </el-icon>&nbsp;?
-              <el-divider direction="vertical"></el-divider>
-              <el-icon>
                 <DocumentAdd />
               </el-icon>
               &nbsp;{{ formatDateStr(problemInfo?.create_time ?? "") }}

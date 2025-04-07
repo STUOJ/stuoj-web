@@ -38,23 +38,6 @@ onBeforeMount(() => {
             </el-form-item>
           </el-form>
         </el-card>
-        <el-card style="margin-bottom: 20px">
-          <template #header>
-            <div class="card-header">
-              <strong>博客热榜</strong>
-            </div>
-          </template>
-          <EmptyPage/>
-<!--
-          <ul>
-            <li>1. 今天天气真好</li>
-            <li>2. 今天天气真好</li>
-            <li>3. 今天天气真好</li>
-            <li>4. 今天天气真坏</li>
-            <li>5. 今天天气真好</li>
-          </ul>
--->
-        </el-card>
       </el-col>
       <el-col :span="18">
         <el-card>
