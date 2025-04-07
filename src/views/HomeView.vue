@@ -86,7 +86,7 @@ import router from "@/router";
 import { userStore } from "@/stores/user";
 import ProblemRecommend from "@/components/problem/ProblemRecommend.vue";
 import BlogRecommend from "@/components/blog/BlogRecommend.vue";
-import Banner1 from "@/assets/images/banner/stuoj.jpg";
+import Banner1 from "@/assets/images/banner/jfoj.jpg";
 import Banner2 from "@/assets/images/banner/acm-icpc.jpg";
 import Banner3 from "@/assets/images/banner/jf.jpg";
 import NoticeList from "@/components/blog/NoticeList.vue";

@@ -6,8 +6,8 @@
           <img src="@/assets/images/logo/icon.png" alt="Logo" />
         </a>
         <div class="logo-text">
-          <span style="font-weight: bolder">STUOJ</span>
-          <span style="font-size: 12px;">stuoj.com</span>
+          <span style="font-weight: bolder">JFOJ</span>
+          <span style="font-size: 12px;">jfoj.com</span>
         </div>
       </div>
       <el-menu-item v-for="link in menuLinks" :key="link.index" :index="link.index">

@@ -299,7 +299,7 @@ onMounted(async () => {
     });
     if (state.value) {
       problemInfo.value = state.value;
-      document.title = `[P${problemInfo.value.id}] ${problemInfo.value.title} - 题目 - STUOJ`;
+      document.title = `[P${problemInfo.value.id}] ${problemInfo.value.title} - 题目 - JFOJ`;
     }
   });
 });

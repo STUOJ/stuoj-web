@@ -5,9 +5,8 @@ const year = new Date().getFullYear();
 <template>
   <div class="footer">
     <div class="about">
-      Copyright © 2024-{{ year }} STUOJ. All Rights Reserved.<br/>
+      Copyright © 2024-{{ year }} JFOJ. All Rights Reserved.<br/>
       GNU GENERAL PUBLIC LICENSE Version 3<br/>
-      <a href="https://github.com/STUOJ">汕头大学疾风算法协会 STUOJ 开发组</a><br/>
     </div>
   </div>
 </template>

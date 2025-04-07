@@ -129,7 +129,7 @@ const signature = ref<string>();
 const updateInfo = async () => {
   const userIdNum = Number(userId.value);
   if (userIdNum === id.value) {
-    document.title = `${info.value?.username} - 用户 - STUOJ`;
+    document.title = `${info.value?.username} - 用户 - JFOJ`;
     info = info_;
     signature.value = info.value?.signature;
   } else {
@@ -137,7 +137,7 @@ const updateInfo = async () => {
       id: userId.value,
     });
     if (state.value) {
-      document.title = `${info.value?.username} - 用户 - STUOJ`;
+      document.title = `${info.value?.username} - 用户 - JFOJ`;
       info.value = state.value;
       signature.value = state.value.signature;
     }

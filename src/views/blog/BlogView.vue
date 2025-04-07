@@ -31,7 +31,7 @@ onMounted(async () => {
   });
   if (state.value) {
     blog.value = state.value
-    document.title = `${blog.value.title} - 博客 - STUOJ`;
+    document.title = `${blog.value.title} - 博客 - JFOJ`;
   }
 });
 
