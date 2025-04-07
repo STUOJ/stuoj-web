@@ -7,7 +7,7 @@
         </a>
         <div class="logo-text">
           <span style="font-weight: bolder">JFOJ</span>
-          <span style="font-size: 12px;">jfoj.com</span>
+          <span style="font-size: 12px;">jf.stuoj.com</span>
         </div>
       </div>
       <el-menu-item v-for="link in menuLinks" :key="link.index" :index="link.index">

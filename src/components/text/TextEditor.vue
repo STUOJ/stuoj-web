@@ -230,7 +230,7 @@ const saveHistory = () => {
 };
 
 const help = () => {
-  window.open("https://jfoj.com/blog/28", "_blank");
+  window.open("https://jf.stuoj.com/blog/28", "_blank");
 }
 
 const undo = () => {
