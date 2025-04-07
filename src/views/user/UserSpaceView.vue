@@ -32,26 +32,13 @@
             <span class="statistic-label">博客</span>
             <span class="statistic-value">{{ info?.blog_count }}</span>
           </div>
-          <div class="statistic-item">
-            <span class="statistic-label">题单</span>
-            <span class="statistic-value">?</span>
-          </div>
-          <div class="statistic-item">
-            <span class="statistic-label">比赛</span>
-            <span class="statistic-value">?</span>
-          </div>
         </div>
       </div>
     </el-card>
     <el-tabs type="border-card" v-model="tabName">
       <el-tab-pane label="主页">
         <el-row :gutter="20">
-          <el-col :span="16">
-            <el-card>
-              <EmptyPage></EmptyPage>
-            </el-card>
-          </el-col>
-          <el-col :span="8">
+          <el-col :span="24">
             <el-card>
               <template #header>
                 <div class="user-info-item">
@@ -90,12 +77,6 @@
       </el-tab-pane>
       <el-tab-pane label="记录">
         <Records :userId="userId" :select="false" />
-      </el-tab-pane>
-      <el-tab-pane label="题单">
-        <UserCollection :userId="userId" />
-      </el-tab-pane>
-      <el-tab-pane label="比赛">
-        <UserContest :userId="userId" />
       </el-tab-pane>
     </el-tabs>
     <ElRow>
