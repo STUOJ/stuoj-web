@@ -15,7 +15,8 @@
               <h5>题目</h5>
               <div>
                 <FPSImport @import-fps="handleImportFPS" />
-                <ElButton v-if="problemId !== 0" type="info" :icon="Refresh" @click="reset" style="margin-left: 10px;">重置
+                <ElButton v-if="problemId !== 0" type="info" :icon="Refresh" @click="reset" style="margin-left: 10px;">
+                  重置
                 </ElButton>
               </div>
             </div>
@@ -23,7 +24,8 @@
           </div>
           <div class="section">
             <h2>题目描述</h2>
-            <ElInput v-model="problem.description" type="textarea" resize="none" :autosize="{ minRows: 5, maxRows: 10 }">
+            <ElInput v-model="problem.description" type="textarea" resize="none"
+              :autosize="{ minRows: 5, maxRows: 10 }">
             </ElInput>
           </div>
           <div class="section">
@@ -42,13 +44,13 @@
               <div class="example-input">
                 <h3>输入</h3>
                 <ElInput v-model="problem.sample_input" type="textarea" resize="none"
-                         :autosize="{ minRows: 4, maxRows: 6 }">
+                  :autosize="{ minRows: 4, maxRows: 6 }">
                 </ElInput>
               </div>
               <div class="example-output">
                 <h3>输出</h3>
                 <ElInput v-model="problem.sample_output" type="textarea" resize="none"
-                         :autosize="{ minRows: 4, maxRows: 6 }">
+                  :autosize="{ minRows: 4, maxRows: 6 }">
                 </ElInput>
               </div>
             </div>
@@ -71,7 +73,8 @@
               </div>
               <div style="display: flex; justify-content: flex-start; gap:10px;">
                 <ElText size="large" tag="b">时间限制</ElText>
-                <ElInputNumber v-model="problem.time_limit" label="时间限制" :precision="2" :min="0" :max="10000" :step="0.5">
+                <ElInputNumber v-model="problem.time_limit" label="时间限制" :precision="2" :min="0" :max="10000"
+                  :step="0.5">
                   <template #suffix>
                     <span>s</span>
                   </template>
@@ -102,7 +105,8 @@
                 </ElTooltip>
               </div>
               <ElDivider />
-              <ProblemTag tags-size="default" layout="vertical" :remove-flag="true" v-model:tag-ids="tagIds" v-model:tags="tags" />
+              <ProblemTag tags-size="default" layout="vertical" :remove-flag="true" v-model:tag-ids="tagIds"
+                v-model:tags="tags" />
               <div style="display: flex; justify-content: flex-end;">
                 <ElButton type="primary" @click="handleUpdateTag">更新标签</ElButton>
               </div>
@@ -231,6 +235,7 @@ const reset = async () => {
     params: {
       testcases: true,
       solutions: true,
+      detail: true,
     }
   }).then(async (res) => {
     if (res.value) {
